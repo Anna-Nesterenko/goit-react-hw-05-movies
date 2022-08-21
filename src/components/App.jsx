@@ -1,16 +1,19 @@
+import { Routes, Route } from 'react-router-dom';
+import { SideBar } from 'components';
+import { Home } from 'pages';
+import { GlobalStyles } from './GlobalStyles';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<SideBar />}>
+          <Route path="home" element={<Home />} />
+          <Route path="home/:movieId" element={<div>Single id page</div>} />
+          <Route path="movies" element={<div>movies</div>} />
+        </Route>
+      </Routes>
+    </>
   );
 };
