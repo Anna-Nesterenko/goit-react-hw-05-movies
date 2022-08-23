@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-import { getTrendingMovies } from "services/services";
+import { useState, useEffect } from 'react';
+import { getTrendingMovies } from 'services/services';
 
 export const useFetchMovies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -12,7 +13,7 @@ export const useFetchMovies = () => {
         const data = await getTrendingMovies();
         setMovies(data.results);
       } catch (error) {
-        console.log(error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -21,5 +22,5 @@ export const useFetchMovies = () => {
     fetchMovies();
   }, []);
 
-  return { movies, loading };
+  return { movies, loading, error };
 };

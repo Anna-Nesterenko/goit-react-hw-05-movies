@@ -5,7 +5,7 @@ export const SideBar = () => {
     <>
       <div>
         <nav>
-          <NavLink to="/home">home</NavLink>
+          <NavLink to="/">home</NavLink>
           <NavLink to="/movies">moves</NavLink>
         </nav>
         <Outlet />

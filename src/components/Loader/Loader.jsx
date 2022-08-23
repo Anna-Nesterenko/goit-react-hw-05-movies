@@ -1,11 +1,17 @@
 import { RotatingLines } from 'react-loader-spinner';
 
-export const Loader = () => {
+const sizes = {
+  sm: 40,
+  md: 60,
+  lg: 80,
+};
+
+export const Loader = ({ size = 'lg' }) => {
   return (
     <RotatingLines
       strokeColor="grey"
       strokeWidth="4"
-      width="100"
+      width={sizes[size]}
       animationDuration="1.2"
     />
   );

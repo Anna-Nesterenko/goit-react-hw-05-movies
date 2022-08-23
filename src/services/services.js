@@ -15,7 +15,17 @@ export const getSearchMovies = async searchQuery => {
   return data;
 };
 
-export const getMovieDetails = async id => {
+export const getMovieDetailsById = async id => {
   const { data } = await axios.get(`movie/${id}?api_key=${API_KEY}`);
+  return data;
+};
+
+export const getMovieByCast = async id => {
+  const { data } = await axios.get(`movie/${id}/credits?api_key=${API_KEY}`);
+  return data;
+};
+
+export const getMovieByReviews = async id => {
+  const { data } = await axios.get(`movie/${id}/reviews?api_key=${API_KEY}`);
   return data;
 };

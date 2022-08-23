@@ -3,18 +3,21 @@ import { useFetchMovies } from 'hooks';
 import { Link } from 'react-router-dom';
 
 export const Home = () => {
-  const { movies, loading } = useFetchMovies();
+  const { movies, loading, error } = useFetchMovies();
 
   return (
     <main>
       {loading && <Loader />}
-      <ul>
-        {movies.map(el => (
-          <li key={el.id}>
-            <Link to={`/home/${el.id}`}>{el.title}</Link>
-          </li>
-        ))}
-      </ul>
+
+      {!error && (
+        <ul>
+          {movies.map(el => (
+            <li key={el.id}>
+              <Link to={`/movies/${el.id}`}>{el.title}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
