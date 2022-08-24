@@ -5,3 +5,4 @@ export * from './SearchForm/SearchForm';
 export * from './MovieCard/MovieCard';
 export * from './CastList/CastList';
 export * from './ReviewsList/ReviewsList';
+export * from './ButtonBackTo/ButtonBackTo';

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Loader } from 'components';
 import { ReviewsList } from 'components';
 
-export const Reviews = () => {
+export const ReviewsPage = () => {
   const { movieId } = useParams();
 
   const [reviews, setReviews] = useState([]);
@@ -16,7 +16,7 @@ export const Reviews = () => {
       setLoading(true);
       try {
         const data = await getMovieByReviews(movieId);
-        console.log('data', data);
+        //   console.log('data', data);
         setReviews(data.results);
       } catch (error) {
         setError(error);

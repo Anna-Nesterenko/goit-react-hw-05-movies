@@ -17,7 +17,8 @@ export const useFetchMoviesById = () => {
 
         setMovies(data);
       } catch (error) {
-        setError(error);
+          setError(error);
+      //   error('Page is not found');
         //   toast.error(`Not Found`);
       } finally {
         setLoading(false);

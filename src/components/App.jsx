@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { SideBar } from 'components';
 import { GlobalStyles } from './GlobalStyles';
 import { ToastContainer } from 'react-toastify';
+import { NotFoundPage } from 'pages';
 
 const loaderLazy = componentName => {
   return lazy(() =>
@@ -12,11 +13,11 @@ const loaderLazy = componentName => {
   );
 };
 
-const Home = loaderLazy('Home');
-const Movies = loaderLazy('Movies');
-const MoviesDetailsPage = loaderLazy('MoviesDetailsPage');
-const Cast = loaderLazy('Cast');
-const Reviews = loaderLazy('Reviews');
+const HomePage = loaderLazy('HomePage');
+const MoviesPage = loaderLazy('MoviesPage');
+const MoviesSinglePage = loaderLazy('MoviesSinglePage');
+const CastPage = loaderLazy('CastPage');
+const ReviewsPage = loaderLazy('ReviewsPage');
 
 export const App = () => {
   return (
@@ -25,13 +26,13 @@ export const App = () => {
       <Suspense fallback="Wait a little bit...">
         <Routes>
           <Route path="/" element={<SideBar />}>
-            <Route index element={<Home />} />
-            <Route path="movies" element={<Movies />} />
-            <Route path="movies/:movieId" element={<MoviesDetailsPage />}>
-              <Route path="cast" element={<Cast />} />
-              <Route path="reviews" element={<Reviews />} /> 
+            <Route index element={<HomePage />} />
+            <Route path="movies" element={<MoviesPage />} />
+            <Route path="movies/:movieId" element={<MoviesSinglePage />}>
+              <Route path="cast" element={<CastPage />} />
+              <Route path="reviews" element={<ReviewsPage />} />
             </Route>
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Suspense>

@@ -2,11 +2,13 @@ import { Loader } from 'components';
 import { useFetchMovies } from 'hooks';
 import { Link } from 'react-router-dom';
 
-export const Home = () => {
+export const HomePage = () => {
   const { movies, loading, error } = useFetchMovies();
+  //   const location = useLocation();
 
   return (
     <main>
+      <h3>Tranding today</h3>
       {loading && <Loader />}
 
       {!error && (

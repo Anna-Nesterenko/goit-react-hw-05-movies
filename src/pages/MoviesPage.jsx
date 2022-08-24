@@ -1,24 +1,25 @@
 import { SearchForm } from 'components';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { getSearchMovies } from 'services/services';
 import { Loader } from 'components';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export function Movies() {
+export const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchQuery = searchParams.get('searchQuery');
+  const query = searchParams.get('query');
+  const location = useLocation();
 
   useEffect(() => {
-    if (searchQuery) {
+    if (query) {
       const fetchByQuery = async () => {
         setLoading(true);
         try {
-          const data = await getSearchMovies(searchQuery);
+          const data = await getSearchMovies(query);
           //  console.log('data', data);
           setMovies(data.results);
         } catch (error) {
@@ -29,14 +30,14 @@ export function Movies() {
       };
       fetchByQuery();
     }
-  }, [searchQuery]);
+  }, [query]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    const searchName = e.target.elements.searchQuery.value;
+    const searchName = e.target.elements.query.value;
     //  console.log('searchQuery :>> ', searchQuery);
     setSearchParams({
-      searchQuery: searchName,
+      query: searchName,
     });
     //  console.log('.value :>> ', searchName);
     if (searchName === '') {
@@ -47,15 +48,24 @@ export function Movies() {
 
   return (
     <>
-      <SearchForm onSubmitForm={handleSubmit} />
+      <SearchForm onSubmitForm={handleSubmit} autoComplete="off" />
+
       {loading && <Loader />}
-      <ul>
-        {movies.map(el => (
-          <li key={el.id}>
-            <Link to={`/movies/${el.id}`}>{el.title}</Link>
-          </li>
-        ))}
-      </ul>
+
+      {movies.length !== 0 ? (
+        <ul>
+          <h3>Search results:</h3>
+          {movies.map(el => (
+            <li key={el.id}>
+              <Link to={`/movies/${el.id}`} state={{ from: location }}>
+                {el.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No information</p>
+      )}
     </>
   );
-}
+};
