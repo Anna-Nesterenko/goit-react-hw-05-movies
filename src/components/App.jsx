@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { SideBar } from 'components';
 import { GlobalStyles } from './GlobalStyles';
 import { ToastContainer } from 'react-toastify';
