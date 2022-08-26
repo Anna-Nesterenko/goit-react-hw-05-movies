@@ -1,23 +1,23 @@
 import noUserImg from '../../images/no-user.jpg';
+import { CastEl, CastImg, CastTitle, CastListStyled } from './CastList.styled';
 
 export const CastList = ({ casts }) => {
-  //   console.log('casts', casts);
+  console.log('casts', casts);
   return (
-    <ul>
-      {casts.map(cast => (
-        <li key={cast.id}>
-          {cast.profile_path ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
-              alt={cast.name}
+    <CastListStyled>
+      {casts.map(({ id, profile_path, name }) => (
+        <CastEl key={id}>
+          {profile_path ? (
+            <CastImg
+              src={`https://image.tmdb.org/t/p/w185${profile_path}`}
+              alt={name}
             />
           ) : (
-            <img src={noUserImg} alt={cast.name} />
+            <CastImg src={noUserImg} alt={name} />
           )}
-          <p>{cast.name}</p>
-          <p>{cast.caracter}</p>
-        </li>
+          <CastTitle>{name}</CastTitle>
+        </CastEl>
       ))}
-    </ul>
+    </CastListStyled>
   );
 };

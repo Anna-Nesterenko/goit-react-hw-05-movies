@@ -1,19 +1,24 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+* {
+	 box-sizing: inherit;
+}
 
  html {
+    width: 100vw;
     box-sizing: border-box;
     scroll-behavior: smooth;
   }
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    font-family: -apple-system, BlinkMacSystemFont, 'Eczar', 'Segoe UI', 'Roboto',
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
     min-height: 100vh;
     font-style: normal;
+	 
   }
 
   h1,
@@ -28,9 +33,9 @@ export const GlobalStyles = createGlobalStyle`
 
   ul,
   ol {
-    /* list-style: none; */
-    /* padding: 0; */
-    /* margin: 0; */
+    list-style: none;
+    padding: 0;
+     margin: 0;
   }
 
   img {
@@ -49,9 +54,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   a {
-    /* text-decoration: none; */
-    /* color: inherit; */
-  }
+    text-decoration: none; 
+	color: inherit;}
+ 
 
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

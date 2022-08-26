@@ -7,7 +7,7 @@ import { NotFoundPage } from 'pages';
 
 const loaderLazy = componentName => {
   return lazy(() =>
-    import(`../pages/${componentName}`).then(module => ({
+    import(`../pages/${componentName}/${componentName}`).then(module => ({
       default: module[componentName],
     }))
   );

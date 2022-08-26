@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getMovieByReviews } from 'services/services';
 import { useParams } from 'react-router-dom';
-import { Loader } from 'components';
-import { ReviewsList } from 'components';
 
-export const ReviewsPage = () => {
+export const useFetchMovieReviews = () => {
+	
   const { movieId } = useParams();
 
   const [reviews, setReviews] = useState([]);
@@ -16,7 +15,7 @@ export const ReviewsPage = () => {
       setLoading(true);
       try {
         const data = await getMovieByReviews(movieId);
-        //   console.log('data', data);
+
         setReviews(data.results);
       } catch (error) {
         setError(error);
@@ -29,18 +28,5 @@ export const ReviewsPage = () => {
     fetchMovieByReviews();
   }, [movieId]);
 
-  return (
-    <main>
-      {!error && (
-        <section>
-          {loading && <Loader />}
-          {reviews.length !== 0 ? (
-            <ReviewsList reviews={reviews} />
-          ) : (
-            <p>No information</p>
-          )}
-        </section>
-      )}
-    </main>
-  );
+  return { reviews, loading, error };
 };

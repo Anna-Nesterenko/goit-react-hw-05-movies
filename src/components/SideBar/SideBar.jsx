@@ -1,15 +1,14 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { WrapperHeader, NavStyled } from './SideBar.styled';
 
 export const SideBar = () => {
   return (
     <>
-      <div>
-        <nav>
-          <NavLink to="/">home</NavLink>
-          <NavLink to="/movies">moves</NavLink>
-        </nav>
-        <Outlet />
-      </div>
+      <WrapperHeader>
+        <NavStyled to="/">Нome</NavStyled>
+        <NavStyled to="/movies">Moves</NavStyled>
+      </WrapperHeader>
+      <Outlet />
     </>
   );
 };

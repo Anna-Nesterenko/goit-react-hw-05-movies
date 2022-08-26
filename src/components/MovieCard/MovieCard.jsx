@@ -1,30 +1,40 @@
 import noPosterImg from '../../images/imageComingSoon.jpg';
+import {
+  WrapperInfoStyled,
+  ImgStyled,
+  WrapperTextInfo,
+  SingleTitle,
+  SingleText,
+  GenresText,
+} from './MovieCard.styled';
+
 export const MovieCard = ({ movie }) => {
-  //   console.log('movie :>> ', movie);
   const precent = Math.ceil(movie.vote_average * 10);
+  const { poster_path, title, overview, genres } = movie;
+
   return (
-    <>
-      <section>
-        {movie.poster_path ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-        ) : (
-          <img src={noPosterImg} alt={movie.title} />
-        )}
-        <div>
-          <h2>{movie.title}</h2>
-          <p>User score: {precent} % </p>
-          <h3>Overview:</h3>
-          <p>{movie.overview}</p>
-          <h3>
-            Genres:
-            {movie.genres &&
-              movie.genres.map(({ id, name }) => <span key={id}>{name}</span>)}
-          </h3>
-        </div>
-      </section>
-    </>
+    <WrapperInfoStyled>
+      {poster_path ? (
+        <ImgStyled
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt={title}
+        />
+      ) : (
+        <ImgStyled src={noPosterImg} alt={title} />
+      )}
+      <WrapperTextInfo>
+        <SingleTitle>Movie title: {title}</SingleTitle>
+        <SingleText>User rating: {precent} % </SingleText>
+        <SingleTitle>Overview:</SingleTitle>
+        <p>{overview}</p>
+        <SingleTitle>
+          Genres:
+          {genres &&
+            genres.map(({ id, name }) => (
+              <GenresText key={id}>{name} |</GenresText>
+            ))}
+        </SingleTitle>
+      </WrapperTextInfo>
+    </WrapperInfoStyled>
   );
 };
