@@ -29,6 +29,7 @@ export const ListEl = styled.li`
     color: white;
   }
 `;
+
 export const LinkStyled = styled(Link)`
   padding-right: 60px;
 `;

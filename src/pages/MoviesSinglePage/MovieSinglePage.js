@@ -5,13 +5,11 @@ export const WrapperList = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
-  
 `;
 
 export const List = styled.ul`
   font-size: 16px;
   font-weight: 700;
-  /* max-width: 300px; */
   padding-top: 15px;
   margin: 0 auto;
   text-align: center;

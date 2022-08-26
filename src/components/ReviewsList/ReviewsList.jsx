@@ -1,6 +1,4 @@
 export const ReviewsList = ({ reviews }) => {
-  //   console.log('reviews', reviews);
-
   return (
     <ul>
       {reviews.map(({ id, author, content }) => (

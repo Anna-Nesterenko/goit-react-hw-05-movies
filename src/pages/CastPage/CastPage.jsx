@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 export const CastPage = () => {
   const { casts, loading, error } = useFetchMovieByCast();
-  //   console.log('first', casts);
+
   return (
     <>
       {!error && (

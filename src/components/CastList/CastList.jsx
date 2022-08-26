@@ -2,7 +2,6 @@ import noUserImg from '../../images/no-user.jpg';
 import { CastEl, CastImg, CastTitle, CastListStyled } from './CastList.styled';
 
 export const CastList = ({ casts }) => {
-  console.log('casts', casts);
   return (
     <CastListStyled>
       {casts.map(({ id, profile_path, name }) => (
