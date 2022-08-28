@@ -1,6 +1,7 @@
 import { ButtonBackTo } from 'components';
 import { Field, BtnSearch, Form, WrapperForm } from './SearchForm.styled';
 import { FiSearch } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
 export function SearchForm({ onSubmitForm }) {
   return (
@@ -20,3 +21,7 @@ export function SearchForm({ onSubmitForm }) {
     </WrapperForm>
   );
 }
+
+SearchForm.propType = {
+  onSubmitForm: PropTypes.func.isRequired,
+};

@@ -5,6 +5,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getSearchMovies } from 'services/services';
 import { SearchMovieList } from 'components';
 import { Loader } from 'components';
+import PropTypes from 'prop-types';
 import { WrapperMoviePage, TextNotInfo } from './MoviePage.styled';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -59,4 +60,6 @@ export const MoviesPage = () => {
   );
 };
 
-
+MoviesPage.propType = {
+  onSubmitForm: PropTypes.func.isRequired,
+};

@@ -1,4 +1,7 @@
+import PropTypes from 'prop-types';
+
 export const ReviewsList = ({ reviews }) => {
+//   console.log('reviews :>> ', reviews);
   return (
     <ul>
       {reviews.map(({ id, author, content }) => (
@@ -9,4 +12,14 @@ export const ReviewsList = ({ reviews }) => {
       ))}
     </ul>
   );
+};
+
+ReviewsList.propType = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };

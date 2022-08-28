@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {
   List,
   MovieSearchTitle,
@@ -7,6 +8,7 @@ import {
 } from './SearchMovieList.styled';
 
 export const SearchMovieList = ({ movies }) => {
+//   console.log('movies', movies);
   const location = useLocation();
   return (
     <List>
@@ -20,4 +22,13 @@ export const SearchMovieList = ({ movies }) => {
       ))}
     </List>
   );
+};
+
+SearchMovieList.propType = {
+  movies: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };

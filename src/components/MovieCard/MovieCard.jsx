@@ -1,4 +1,5 @@
 import noPosterImg from '../../images/imageComingSoon.jpg';
+import PropTypes from 'prop-types';
 import {
   WrapperInfoStyled,
   ImgStyled,
@@ -9,6 +10,7 @@ import {
 } from './MovieCard.styled';
 
 export const MovieCard = ({ movie }) => {
+  //   console.log('movie :>> ', movie);
   const precent = Math.ceil(movie.vote_average * 10);
   const { poster_path, title, overview, genres } = movie;
 
@@ -37,4 +39,15 @@ export const MovieCard = ({ movie }) => {
       </WrapperTextInfo>
     </WrapperInfoStyled>
   );
+};
+
+MovieCard.propType = {
+  movie: PropTypes.arrayOf(
+    PropTypes.exact({
+      poster_path: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      genres: PropTypes.array.isRequired,
+    })
+  ).isRequired,
 };

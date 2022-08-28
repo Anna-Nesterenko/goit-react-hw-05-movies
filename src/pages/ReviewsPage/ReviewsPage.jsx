@@ -2,6 +2,7 @@ import { Loader } from 'components';
 import { ReviewsList } from 'components';
 import { useFetchMovieReviews } from 'hooks';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const ReviewsPage = () => {
   const { reviews, loading, error } = useFetchMovieReviews();
@@ -26,3 +27,7 @@ const WrapperPage = styled.div`
   border-top: 6px double #004747;
   padding: 15px;
 `;
+
+ReviewsPage.propType = {
+  reviews: PropTypes.array.isRequired,
+};

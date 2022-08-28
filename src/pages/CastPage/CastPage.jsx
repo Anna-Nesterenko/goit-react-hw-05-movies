@@ -2,6 +2,7 @@ import { useFetchMovieByCast } from 'hooks';
 import { Loader } from 'components';
 import { CastList } from 'components';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const CastPage = () => {
   const { casts, loading, error } = useFetchMovieByCast();
@@ -26,3 +27,7 @@ const WrapperPage = styled.div`
   border-top: 6px double #004747;
   padding: 15px;
 `;
+
+CastPage.propType = {
+  casts: PropTypes.array.isRequired,
+};
